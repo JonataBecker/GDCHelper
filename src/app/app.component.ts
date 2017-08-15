@@ -1,5 +1,5 @@
-import {DomSanitizer, SafeHtml, SafeStyle, SafeScript, SafeUrl, SafeResourceUrl} from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
+import { Http, Response } from '@angular/http';
 
 @Component({
   selector: 'app-root',
@@ -7,24 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent  implements OnInit{
-  public title;
 
-  constructor(sanitizer: DomSanitizer) {
-      this.title = sanitizer.bypassSecurityTrustHtml('<button id="t">sadsad</button>');
-    }
+  public atendimentos;
 
-    ola() {
-      alert("Ola mooormaaa");
-    }
+  constructor(
+    private http: Http
+  ) {
+  }
 
-
-    ngOnInit() {
-      setTimeout(function() {
-        document.getElementById("t").addEventListener("click", function() {
-          alert("Ola mooormaaa, pelo event");
-
-        })
-
-    });
-    }
+  ngOnInit() {
+    this.http.get('https://gdchelperws.herokuapp.com/atendimentos').subscribe((res:Response) => {
+      this.atendimentos = res.json();
+    })
+  }
 }
