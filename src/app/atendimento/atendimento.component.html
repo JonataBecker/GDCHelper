@@ -7,48 +7,25 @@
         </div>
         <div class="box-body">
           <ul class="products-list product-list-in-box">
-            <li class="item">
+            <li class="item" *ngFor="let atendimento of atendimentos">
               <div class="col-md-4 ">
-                <span class="product-title">Cliente 1</span>
+                <span class="product-title">{{ atendimento.cliente }}</span>
               </div>
               <div class="col-md-4">
                   <div class="progress-group">
                     <span class="progress-text">Quantidade</span>
-                    <span class="progress-number"><b>160</b>/200</span>
+                    <span class="progress-number"><b>{{ atendimento.quantidade }}</b>/{{ maiorQuantidade }}</span>
                     <div class="progress sm">
-                      <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
+                      <div class="progress-bar progress-bar-aqua" [ngStyle]="{'width': atendimento.quantidade * 100 / maiorQuantidade + '%'}"></div>
                     </div>
                   </div>
               </div>
               <div class="col-md-4">
                   <div class="progress-group">
                     <span class="progress-text">Tempo total</span>
-                    <span class="progress-number"><b>160</b>/200</span>
+                    <span class="progress-number"><b>{{ atendimento.tempo }}</b>/{{ maiorTempo }}</span>
                     <div class="progress sm">
-                      <div class="progress-bar progress-bar-red" style="width: 80%"></div>
-                    </div>
-                  </div>
-              </div>
-            </li>
-            <li class="item">
-              <div class="col-md-4 ">
-                <span class="product-title">Cliente 2</span>
-              </div>
-              <div class="col-md-4">
-                  <div class="progress-group">
-                    <span class="progress-text">Quantidade</span>
-                    <span class="progress-number"><b>160</b>/200</span>
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
-                    </div>
-                  </div>
-              </div>
-              <div class="col-md-4">
-                  <div class="progress-group">
-                    <span class="progress-text">Tempo total</span>
-                    <span class="progress-number"><b>160</b>/200</span>
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-red" style="width: 80%"></div>
+                      <div class="progress-bar progress-bar-red" [ngStyle]="{'width': atendimento.tempo * 100 / maiorTempo + '%'}"></div>
                     </div>
                   </div>
               </div>

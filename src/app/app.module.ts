@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { AtendimentoComponent } from './atendimento/atendimento.component';
+import { WebserviceService } from './webservice.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { AtendimentoComponent } from './atendimento/atendimento.component';
     AppRoutingModule
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [WebserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

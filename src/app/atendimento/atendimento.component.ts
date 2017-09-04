@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Http, Response } from '@angular/http';
+
+
+import { WebserviceService } from 'app/webservice.service';
 
 @Component({
   selector: 'app-atendimento',
@@ -9,14 +11,36 @@ import { Http, Response } from '@angular/http';
 export class AtendimentoComponent implements OnInit {
 
   public atendimentos;
+  public maiorTempo;
+  public maiorQuantidade;
 
   constructor(
-    private http: Http
+    private webservice: WebserviceService
   ) { }
 
   ngOnInit() {
-    this.http.get('https://gdchelperws.herokuapp.com/atendimentos').subscribe((res:Response) => {
+    this.webservice.get('atendimentos/historico').subscribe((res) => {
+      debugger;
       this.atendimentos = res.json();
+      [this.maiorTempo, this.maiorQuantidade] = this.buildMaiorTempoQuantidade(this.atendimentos);
     })
   }
+
+  private buildMaiorTempoQuantidade(atendimentos) {
+    let maiorTempo = 0;
+    let maiorQuantidade = 0;
+    atendimentos.forEach((atendimento) => {
+      if (atendimento.quantidade > maiorQuantidade) {
+        maiorQuantidade = atendimento.quantidade;
+      }
+      if (atendimento.tempo > maiorTempo) {
+        maiorTempo = atendimento.tempo;
+      }
+    });
+
+
+    return [maiorTempo, maiorQuantidade];
+  }
+
+
 }
