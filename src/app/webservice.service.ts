@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { URLSearchParams } from '@angular/http';
 
 @Injectable()
 export class WebserviceService {
@@ -12,8 +13,8 @@ export class WebserviceService {
     return 'http://localhost:8084/GDCHelperWS/' + page;
   }
 
-  get(page:string):Observable<Response> {
-    return this.http.get(this.buildURL(page));
+  get(page:string, params: URLSearchParams):Observable<Response> {
+    return this.http.get(this.buildURL(page),  { search: params });
   }
 
 }

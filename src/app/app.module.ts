@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { AtendimentoComponent } from './atendimento/atendimento.component';
 import { WebserviceService } from './webservice.service';
+import { AdminLTE } from './AdminLTE'
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { WebserviceService } from './webservice.service';
     AppRoutingModule
   ],
   exports: [RouterModule],
-  providers: [WebserviceService],
+  providers: [WebserviceService, AdminLTE],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

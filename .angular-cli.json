@@ -23,13 +23,16 @@
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "../node_modules/admin-lte/dist/css/AdminLTE.min.css",
         "../node_modules/admin-lte/dist/css/skins/_all-skins.min.css",
+        "../node_modules/daterangepicker/daterangepicker.css",
         "styles.css"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/bootstrap/dist/js/bootstrap.min.js",
         "../node_modules/chart.js/dist/Chart.min.js",
-        "../node_modules/admin-lte/dist/js/app.min.js"
+        "../node_modules/admin-lte/dist/js/app.min.js",
+        "../node_modules/moment/moment.js",
+        "../node_modules/daterangepicker/daterangepicker.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
