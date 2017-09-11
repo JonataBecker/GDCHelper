@@ -10,7 +10,7 @@ export class WebserviceService {
 
   private buildURL(page:string):string {
     //return 'https://gdchelperws.herokuapp.com/';
-    return 'http://localhost:8084/GDCHelperWS/' + page;
+    return 'http://localhost:8180/GDCHelperWS/' + page;
   }
 
   get(page:string, params: URLSearchParams):Observable<Response> {
