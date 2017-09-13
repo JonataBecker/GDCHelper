@@ -11,24 +11,26 @@ export class HomeComponent implements OnInit {
 
   public clientes;
   public gdc:string;
+  public loading:boolean;
 
   constructor(private webservice: WebserviceService) { }
 
   ngOnInit() {
     this.gdc = "";
-    this.load(this.gdc);
   }
 
   filter() {
+    this.clientes = null;
     this.load(this.gdc);
   }
 
   load(gdc:string) {
+    this.loading = true;
     const data = new  URLSearchParams();
     data.append('gdc', gdc);
     this.webservice.get('cliente', data).subscribe((res) => {
       this.clientes = res.json();
-      console.log(this.clientes);
+      this.loading = false;
     });
   }
 
