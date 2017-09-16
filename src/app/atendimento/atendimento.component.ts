@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { URLSearchParams } from '@angular/http';
+import { Router } from '@angular/router';
 import * as moment from 'moment';
 import * as jquery from 'jquery';
 import { WebserviceService } from 'app/webservice.service';
+import { AtendimentoService } from './atendimento.service';
 
 @Component({
   selector: 'app-atendimento',
@@ -16,9 +18,12 @@ export class AtendimentoComponent implements OnInit {
   public maiorQuantidade;
   public date:string;
   public gdc:string;
+  public cliente:string;
 
-  constructor(
-    private webservice: WebserviceService
+  constructor (
+    private router: Router,
+    private webservice: WebserviceService,
+    private atendimentoService: AtendimentoService
   ) { }
 
   ngOnInit() {
@@ -26,6 +31,7 @@ export class AtendimentoComponent implements OnInit {
     const fim = moment().format('DD-MM-YYYY');
     this.date = ini + " - " + fim;
     this.gdc = "";
+    this.cliente = "";
     let me = this;
     (<any>$('#reservation')).daterangepicker(
       {
@@ -39,37 +45,33 @@ export class AtendimentoComponent implements OnInit {
         me.date = (<any>$('#reservation')).val();
         me.filter();
       });
-      this.load(ini, fim, "");
+      this.load(ini, fim, "", "");
   }
 
-  private buildMaiorTempoQuantidade(atendimentos) {
-    let maiorTempo = 0;
-    let maiorQuantidade = 0;
-    atendimentos.forEach((atendimento) => {
-      atendimento.tempo = parseFloat(atendimento.tempo);
-      if (atendimento.quantidade > maiorQuantidade) {
-        maiorQuantidade = atendimento.quantidade;
-      }
-      if (atendimento.tempo > maiorTempo) {
-        maiorTempo = atendimento.tempo;
-      }
-    });
-    return [maiorTempo, maiorQuantidade];
+
+  private getDate(data) {
+    return moment(data, "DD/MM/YYYY").format("YYYY-MM-DD");
   }
 
-  load(ini:string, fim:string, gdc:string) {
+  load(ini:string, fim:string, gdc:string, cliente:string) {
     const data = new  URLSearchParams();
-    data.append('dataInicial', moment(ini, "DD/MM/YYYY").format("YYYY-MM-DD"));
-    data.append('dataFinal', moment(fim, "DD/MM/YYYY").format("YYYY-MM-DD"));
+    data.append('dataInicial', this.getDate(ini));
+    data.append('dataFinal', this.getDate(fim));
     data.append('gdc', gdc);
+    data.append('cliente', cliente);
     this.webservice.get('atendimentos/historico', data).subscribe((res) => {
       this.atendimentos = res.json();
-      [this.maiorTempo, this.maiorQuantidade] = this.buildMaiorTempoQuantidade(this.atendimentos);
+      [this.maiorTempo, this.maiorQuantidade] = this.atendimentoService.buildMaiorTempoQuantidade(this.atendimentos);
     });
   }
 
   filter() {
     let [ini, fim] = this.date.split(' - ');
-    this.load(ini, fim, this.gdc);
+    this.load(ini, fim, this.gdc, this.cliente);
+  }
+
+  dril(atendimento:any) {
+    let [ini, fim] = this.date.split(' - ');
+    this.router.navigate(['/atendimento', atendimento.idCliente, this.getDate(ini), this.getDate(fim)]);
   }
 }

@@ -7,17 +7,18 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { ClienteComponent } from './cliente/cliente.component';
 import { AtendimentoComponent } from './atendimento/atendimento.component';
 import { WebserviceService } from './webservice.service';
-import { AdminLTE } from './AdminLTE'
+import { AdminLTE } from './AdminLTE';
+import { AtendimentoDrilComponent } from './atendimento/atendimento-dril/atendimento-dril.component'
+import { AtendimentoService } from './atendimento/atendimento.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ClienteComponent,
-    AtendimentoComponent
+    AtendimentoComponent,
+    AtendimentoDrilComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +27,7 @@ import { AdminLTE } from './AdminLTE'
     AppRoutingModule
   ],
   exports: [RouterModule],
-  providers: [WebserviceService, AdminLTE],
+  providers: [WebserviceService, AdminLTE, AtendimentoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

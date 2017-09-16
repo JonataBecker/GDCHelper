@@ -1,0 +1,79 @@
+<section class="content-header">
+  <h1>
+    Histórico de atendimentos
+  </h1>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title">Contatos</h3>
+        </div>
+        <div class="box-body">
+          <ul class="products-list product-list-in-box">
+            <li class="item" *ngFor="let contato of contatos">
+              <div class="col-md-4 ">
+                <span class="product-title">{{contato.contato}}</span>
+              </div>
+              <div class="col-md-4">
+                  <div class="progress-group">
+                    <span class="progress-text">Quantidade</span>
+                    <span class="progress-number"><b>{{ contato.quantidade }}</b>/{{ maiorQuantidadeContato }}</span>
+                    <div class="progress sm">
+                      <div class="progress-bar progress-bar-aqua" [ngStyle]="{'width': contato.quantidade * 100 / maiorQuantidadeContato + '%'}"></div>
+                    </div>
+                  </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="progress-group">
+                    <span class="progress-text">Tempo total</span>
+                    <span class="progress-number"><b>{{ contato.tempo }}</b>/{{ maiorTempoContato }}</span>
+                    <div class="progress sm">
+                      <div class="progress-bar progress-bar-red" [ngStyle]="{'width': contato.tempo * 100 / maiorTempoContato + '%'}"></div>
+                    </div>
+                  </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title">Sistemas</h3>
+        </div>
+        <div class="box-body">
+          <ul class="products-list product-list-in-box">
+            <li class="item" *ngFor="let sistema of sistemas">
+              <div class="col-md-4 ">
+                <span class="product-title">{{sistema.sistema}}</span>
+              </div>
+              <div class="col-md-4">
+                  <div class="progress-group">
+                    <span class="progress-text">Quantidade</span>
+                    <span class="progress-number"><b>{{ sistema.quantidade }}</b>/{{ maiorQuantidadeSistema }}</span>
+                    <div class="progress sm">
+                      <div class="progress-bar progress-bar-aqua" [ngStyle]="{'width': sistema.quantidade * 100 / maiorQuantidadeSistema + '%'}"></div>
+                    </div>
+                  </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="progress-group">
+                    <span class="progress-text">Tempo total</span>
+                    <span class="progress-number"><b>{{ sistema.tempo }}</b>/{{ maiorTempoSistema }}</span>
+                    <div class="progress sm">
+                      <div class="progress-bar progress-bar-red" [ngStyle]="{'width': sistema.tempo * 100 / maiorTempoSistema + '%'}"></div>
+                    </div>
+                  </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
