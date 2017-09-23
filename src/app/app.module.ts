@@ -12,13 +12,15 @@ import { WebserviceService } from './webservice.service';
 import { AdminLTE } from './AdminLTE';
 import { AtendimentoDrilComponent } from './atendimento/atendimento-dril/atendimento-dril.component'
 import { AtendimentoService } from './atendimento/atendimento.service';
+import { ClienteComponent } from './cliente/cliente.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AtendimentoComponent,
-    AtendimentoDrilComponent
+    AtendimentoDrilComponent,
+    ClienteComponent
   ],
   imports: [
     BrowserModule,
