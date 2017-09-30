@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
   }
 
   buildAtendientoQuantidade() {
-
     this.webservice.get('dash/atendimento/quantidade', null).subscribe((res) => {
       const data = res.json();
       this.atendimentoQuantidade = new Chart({
@@ -36,7 +35,7 @@ export class HomeComponent implements OnInit {
           })
         },
         title: {
-          text: 'Quantidade de atendimento por periodo'
+          text: 'Quantidade de atendimentos por período'
         },
         credits: {
           enabled: false

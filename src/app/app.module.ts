@@ -14,6 +14,7 @@ import { AdminLTE } from './AdminLTE';
 import { AtendimentoDrilComponent } from './atendimento/atendimento-dril/atendimento-dril.component'
 import { AtendimentoService } from './atendimento/atendimento.service';
 import { ClienteComponent } from './cliente/cliente.component';
+import { UsuarioLogado } from './usuario/usuario-logado';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,12 @@ import { ClienteComponent } from './cliente/cliente.component';
     AppRoutingModule
   ],
   exports: [RouterModule],
-  providers: [WebserviceService, AdminLTE, AtendimentoService],
+  providers: [
+    WebserviceService,
+    AdminLTE,
+    AtendimentoService,
+    UsuarioLogado
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
