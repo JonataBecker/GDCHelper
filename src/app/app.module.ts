@@ -14,6 +14,7 @@ import { AdminLTE } from './AdminLTE';
 import { AtendimentoDrilComponent } from './atendimento/atendimento-dril/atendimento-dril.component'
 import { AtendimentoService } from './atendimento/atendimento.service';
 import { ClienteComponent } from './cliente/cliente.component';
+import { PesquisaPipe } from './pesquisa.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ClienteComponent } from './cliente/cliente.component';
     HomeComponent,
     AtendimentoComponent,
     AtendimentoDrilComponent,
-    ClienteComponent
+    ClienteComponent,
+    PesquisaPipe
   ],
   imports: [
     BrowserModule,

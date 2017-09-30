@@ -5,7 +5,7 @@
         <h2 class="page-header">
           <i class="fa fa-user"></i> &nbsp; {{cliente.codigo}} - {{cliente.nomeFantasia}}
             (<b>{{cliente.conceito}}</b>)
-          <small *ngIf="cliente.dataCadastro != null" class="pull-right">
+          <small *ngIf="cliente.dataCadastro != undefined" class="pull-right">
             Cliente desde {{cliente.dataCadastro | date:'dd/MM/yyyy'}}
           </small>
         </h2>

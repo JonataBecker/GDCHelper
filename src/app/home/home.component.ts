@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   public gdc:string;
   public loading:boolean;
   public atendimentoQuantidade:Chart;
+  public pesquisa;
 
   constructor(private webservice: WebserviceService) { }
 
@@ -64,6 +65,10 @@ export class HomeComponent implements OnInit {
       this.clientes = res.json();
       this.loading = false;
     });
+  }
+
+  search() {
+
   }
 
 }

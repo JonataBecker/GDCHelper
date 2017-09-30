@@ -20,9 +20,14 @@
   <div class="box box-info">
     <div class="box-header with-border">
       <h3 class="box-title"></h3>
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+      <div class="box-tools">
+        <div class="input-group input-group-sm" style="width: 250px;">
+          <input type="text" name="table_search" class="form-control pull-right" placeholder="Pesquisa" [(ngModel)]="pesquisa">
+          <div class="input-group-btn">
+            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+          </div>
         </div>
+      </div>
     </div>
     <div class="box-body">
       <div class="table-responsive">
@@ -35,7 +40,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let cliente of clientes">
+            <tr *ngFor="let cliente of (clientes | pesquisa:pesquisa:['codigo','nomeFantasia','conceito','cidade','uf','dataCadastro'])">
               <td><a href="/cliente/{{cliente[0].codigo}}">{{cliente[0].codigo}} - {{cliente[0].nomeFantasia}}</a></td>
               <td>{{cliente[1].codigo}} - {{cliente[1].apelido}}</td>
               <td></td>
