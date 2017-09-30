@@ -15,6 +15,7 @@ import { AtendimentoDrilComponent } from './atendimento/atendimento-dril/atendim
 import { AtendimentoService } from './atendimento/atendimento.service';
 import { ClienteComponent } from './cliente/cliente.component';
 import { UsuarioLogado } from './usuario/usuario-logado';
+import { PesquisaPipe } from './pesquisa.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { UsuarioLogado } from './usuario/usuario-logado';
     HomeComponent,
     AtendimentoComponent,
     AtendimentoDrilComponent,
-    ClienteComponent
+    ClienteComponent,
+    PesquisaPipe
   ],
   imports: [
     BrowserModule,
