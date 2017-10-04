@@ -38,7 +38,9 @@
             <tr *ngFor="let cliente of clientes">
               <td>{{cliente[0].codigo}} - {{cliente[0].nomeFantasia}}</td>
               <td>{{cliente[1].codigo}} - {{cliente[1].apelido}}</td>
-              <td></td>
+              <td>
+                <app-negative-positive-progress-bar title="Score de satisfação" [value]="cliente[0].scoreMedia"></app-negative-positive-progress-bar>
+              </td>
             </tr>
           </tbody>
         </table>

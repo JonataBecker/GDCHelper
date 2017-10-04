@@ -13,13 +13,15 @@ import { WebserviceService } from './webservice.service';
 import { AdminLTE } from './AdminLTE';
 import { AtendimentoDrilComponent } from './atendimento/atendimento-dril/atendimento-dril.component'
 import { AtendimentoService } from './atendimento/atendimento.service';
+import { NegativePositiveProgressBarComponent } from './negative-positive-progress-bar/negative-positive-progress-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AtendimentoComponent,
-    AtendimentoDrilComponent
+    AtendimentoDrilComponent,
+    NegativePositiveProgressBarComponent
   ],
   imports: [
     BrowserModule,
