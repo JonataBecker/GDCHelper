@@ -1,0 +1,87 @@
+<section class="content">
+  <section class="invoice">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2 class="page-header">
+          <i class="fa fa-user"></i> &nbsp; {{cliente.codigo}} - {{cliente.nomeFantasia}}
+            (<b>{{cliente.conceito}}</b>)
+          <small *ngIf="cliente.dataCadastro != undefined" class="pull-right">
+            Cliente desde {{cliente.dataCadastro | date:'dd/MM/yyyy'}}
+          </small>
+        </h2>
+      </div>
+    </div>
+    <div class="row invoice-info col-xs-12">
+      <b>Razão Social:</b> {{cliente.nome}}
+    </div>
+    <div class="row invoice-info col-xs-12">
+      <b>CPF/CNPJ:</b> {{cliente.cpfCnpj}}
+    </div>
+    <div class="row invoice-info">
+      <div class="col-xs-4">
+        <b>Endereço:</b> {{cliente.endereco}}
+      </div>
+      <div class="col-xs-4">
+        <b>Bairro:</b> {{cliente.bairro}}
+      </div>
+      <div class="col-xs-4">
+        <b>CEP:</b> {{cliente.cep}}
+      </div>
+    </div>
+    <div class="row invoice-info">
+      <div class="col-xs-4">
+        <b>Cidade:</b> {{cliente.cidade}}
+      </div>
+      <div class="col-xs-4">
+        <b>UF:</b> {{cliente.uf}}
+      </div>
+    </div>
+    <div class="row invoice-info">
+      <div class="col-xs-4">
+        <b>Telefone:</b> {{cliente.telefonePrincipal}}
+      </div>
+      <div class="col-xs-4 invoice-info" *ngIf="cliente.telefoneSecundario != ''">
+        <b>Telefone secundário:</b> {{cliente.telefoneSecundario}}
+      </div>
+      <div class="col-xs-4 invoice-info" *ngIf="cliente.celular != ''">
+        <b>Celular:</b> {{cliente.celular}}
+      </div>
+    </div>
+    <div class="row invoice-info">
+      <div class="col-xs-4">
+        <b>Versão atual:</b> {{cliente.versaoAtual}}
+      </div>
+      <div class="col-xs-4 invoice-info" *ngIf="cliente.dataAtualizacao != null">
+        <b>Data últ.atualização:</b> {{cliente.dataAtualizacao | date:'dd/MM/yyyy'}}
+      </div>
+      <div class="col-xs-4 invoice-info">
+        <b>Versão liberada:</b> {{cliente.versaoLiberada}}
+      </div>
+    </div>
+
+    <hr>
+    <div class="row col-xs-12">
+      <p class="lead">Contatos</p>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Cargo</th>
+              <th>E-mail</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let contato of contatos">
+              <td>{{contato.nome}}</td>
+              <td>{{contato.cargo}}</td>
+              <td>{{contato.email}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</section>

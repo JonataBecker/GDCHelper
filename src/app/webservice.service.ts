@@ -13,7 +13,7 @@ export class WebserviceService {
     return 'http://localhost:8180/GDCHelperWS/' + page;
   }
 
-  get(page:string, params: URLSearchParams):Observable<Response> {
+  get(page:string, params?: URLSearchParams):Observable<Response> {
     return this.http.get(this.buildURL(page),  { search: params });
   }
 

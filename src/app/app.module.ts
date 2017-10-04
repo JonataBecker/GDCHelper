@@ -14,6 +14,9 @@ import { AdminLTE } from './AdminLTE';
 import { AtendimentoDrilComponent } from './atendimento/atendimento-dril/atendimento-dril.component'
 import { AtendimentoService } from './atendimento/atendimento.service';
 import { NegativePositiveProgressBarComponent } from './negative-positive-progress-bar/negative-positive-progress-bar.component';
+import { ClienteComponent } from './cliente/cliente.component';
+import { UsuarioLogado } from './usuario/usuario-logado';
+import { PesquisaPipe } from './pesquisa.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,9 @@ import { NegativePositiveProgressBarComponent } from './negative-positive-progre
     HomeComponent,
     AtendimentoComponent,
     AtendimentoDrilComponent,
-    NegativePositiveProgressBarComponent
+    NegativePositiveProgressBarComponent,
+    ClienteComponent,
+    PesquisaPipe
   ],
   imports: [
     BrowserModule,
@@ -31,7 +36,12 @@ import { NegativePositiveProgressBarComponent } from './negative-positive-progre
     AppRoutingModule
   ],
   exports: [RouterModule],
-  providers: [WebserviceService, AdminLTE, AtendimentoService],
+  providers: [
+    WebserviceService,
+    AdminLTE,
+    AtendimentoService,
+    UsuarioLogado
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
+import { ClienteComponent } from './cliente/cliente.component';
 import { AtendimentoComponent } from './atendimento/atendimento.component';
 import { AtendimentoDrilComponent } from './atendimento/atendimento-dril/atendimento-dril.component';
 
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'atendimento/:idCliente/:dataInicial/:dataFinal',
     component: AtendimentoDrilComponent,
+  },
+  {
+    path: 'cliente/:idCliente',
+    component: ClienteComponent,
   }
 ];
 
