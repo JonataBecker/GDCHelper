@@ -2,9 +2,9 @@
   <span class="progress-text">{{title}}</span>
   <span class="progress-number"><b>{{value | percent}}</b></span>
   <div class="progress sm">
-    <div class="progress-bar progress-bar-invisible" [ngStyle]="{'width': (-1-value) * -50 + '%'}"></div>
-    <div class="progress-bar progress-bar-red" [ngStyle]="{'width': value * -50 + '%'}"></div>
-    <div class="progress-bar progress-bar-success" [ngStyle]="{'width': value * 50 + '%'}"></div>
-    <div class="progress-bar progress-bar-invisible" [ngStyle]="{'width': (1-value) * 50 + '%'}"></div>
+    <div class="progress-bar progress-bar-red progress-bar-invisible" [ngStyle]="{'width': (-1-negativeValue) * -50 + '%'}"></div>
+    <div class="progress-bar progress-bar-red" [ngStyle]="{'width': negativeValue * -50 + '%'}"></div>
+    <div class="progress-bar progress-bar-success" [ngStyle]="{'width': positiveValue * 50 + '%'}"></div>
+    <div class="progress-bar progress-bar-success progress-bar-invisible" [ngStyle]="{'width': (1-positiveValue) * 50 + '%'}"></div>
   </div>
 </div>

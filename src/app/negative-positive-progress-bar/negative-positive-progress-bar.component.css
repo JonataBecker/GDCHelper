@@ -1,3 +1,7 @@
-.progress-bar-invisible {
-  background: rgba(0,0,0,0);
+.progress-bar-invisible.progress-bar-red {
+  background-color: rgba(221,75,57,0.1);
+}
+
+.progress-bar-invisible.progress-bar-success {
+  background-color: rgba(0,166,90,0.1);
 }

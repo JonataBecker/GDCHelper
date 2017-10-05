@@ -6,9 +6,11 @@
           <i class="fa fa-user"></i> &nbsp; {{cliente.codigo}} - {{cliente.nomeFantasia}}
             (<b>{{cliente.conceito}}</b>)
           <small *ngIf="cliente.dataCadastro != undefined" class="pull-right">
+
             Cliente desde {{cliente.dataCadastro | date:'dd/MM/yyyy'}}
           </small>
         </h2>
+        <app-negative-positive-progress-bar title="Score de satisfação" [value]="cliente.scoreMedia"></app-negative-positive-progress-bar>
       </div>
     </div>
     <div class="row invoice-info col-xs-12">
