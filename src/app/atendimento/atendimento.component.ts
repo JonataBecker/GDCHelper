@@ -5,6 +5,7 @@ import * as moment from 'moment';
 import * as jquery from 'jquery';
 import { WebserviceService } from 'app/webservice.service';
 import { AtendimentoService } from './atendimento.service';
+import { UsuarioLogado } from 'app/usuario/usuario-logado';
 
 @Component({
   selector: 'app-atendimento',
@@ -23,7 +24,8 @@ export class AtendimentoComponent implements OnInit {
   constructor (
     private router: Router,
     private webservice: WebserviceService,
-    private atendimentoService: AtendimentoService
+    private atendimentoService: AtendimentoService,
+    private usuarioLogado: UsuarioLogado
   ) { }
 
   ngOnInit() {
@@ -45,9 +47,13 @@ export class AtendimentoComponent implements OnInit {
         me.date = (<any>$('#reservation')).val();
         me.filter();
       });
-      this.load(ini, fim, "", "");
-  }
 
+
+      this.usuarioLogado.getUsuario().subscribe((usu) => {
+          this.gdc = usu;
+          this.filter();
+      });
+  }
 
   private getDate(data) {
     return moment(data, "DD/MM/YYYY").format("YYYY-MM-DD");

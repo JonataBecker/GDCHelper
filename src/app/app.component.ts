@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AdminLTE } from './AdminLTE'
 import { WebserviceService } from './webservice.service';
 import { UsuarioLogado } from 'app/usuario/usuario-logado';
+import { Usuario } from 'app/usuario/usuario';
 
 @Component({
   selector: 'app-root',
@@ -22,12 +23,15 @@ export class AppComponent  implements OnInit {
 
   ngOnInit() {
     this.adminLTE.fix();
-    this.usuario = { nome : 'Rech' };
+    this.usuario = new Usuario('Rech', 'Rech');
     this.webservice.get('usuarios').subscribe((usuarios) => {
-        this.usuarios = usuarios.json();
-        const founded = this.usuarios.
-          find((usuario) => usuario == this.usuarioLogado.getUsuarioLogado());
-        if (founded != -1) {
+        this.usuarios = usuarios.json().map((usu) => {
+          return new Usuario(usu.apelido, usu.nome);
+        });
+        const founded = this.usuarios.find((usuario) =>  {
+          return usuario.getUsuario() == this.usuarioLogado.getUsuarioLogado();
+        });
+        if (founded) {
           this.usuario = founded;
         }
     });
