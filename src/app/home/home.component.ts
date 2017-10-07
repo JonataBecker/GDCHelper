@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   public gdc:string;
   public loading:boolean;
   public atendimentoQuantidade:Chart;
+  public atendimentoTempo:Chart;
   public pesquisa;
 
   constructor(private webservice: WebserviceService) { }
@@ -21,6 +22,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.gdc = "";
     this.buildAtendientoQuantidade();
+    this.buildAtendientoTempo();
   }
 
   buildAtendientoQuantidade() {
@@ -45,6 +47,40 @@ export class HomeComponent implements OnInit {
           name: 'quantidade',
           data: data.map((it) => {
             return it.quantidade;
+          })
+        }]
+      });
+    });
+  }
+
+  buildAtendientoTempo() {
+    this.webservice.get('dash/atendimento/tempo', null).subscribe((res) => {
+      const data = res.json();
+      console.log(data.map((it) => {
+        return it.tempo;
+      }));
+
+
+
+      this.atendimentoTempo = new Chart({
+        chart: {
+          type: 'line'
+        },
+        xAxis: {
+          categories: data.map((it) => {
+            return it.periodo;
+          })
+        },
+        title: {
+          text: 'Tempo total de atendimentos por período'
+        },
+        credits: {
+          enabled: false
+        },
+        series: [{
+          name: 'tempo',
+          data: data.map((it) => {
+            return parseFloat(it.tempo);
           })
         }]
       });
