@@ -10,16 +10,11 @@ import { WebserviceService } from 'app/webservice.service';
 })
 export class HomeComponent implements OnInit {
 
-  public clientes;
-  public gdc:string;
-  public loading:boolean;
   public atendimentoQuantidade:Chart;
-  public pesquisa;
 
   constructor(private webservice: WebserviceService) { }
 
   ngOnInit() {
-    this.gdc = "";
     this.buildAtendientoQuantidade();
   }
 
@@ -49,25 +44,6 @@ export class HomeComponent implements OnInit {
         }]
       });
     });
-  }
-
-  filter() {
-    this.clientes = null;
-    this.load(this.gdc);
-  }
-
-  load(gdc:string) {
-    this.loading = true;
-    const data = new  URLSearchParams();
-    data.append('gdc', gdc);
-    this.webservice.get('cliente', data).subscribe((res) => {
-      this.clientes = res.json();
-      this.loading = false;
-    });
-  }
-
-  search() {
-
   }
 
 }

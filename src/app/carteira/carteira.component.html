@@ -1,0 +1,58 @@
+<section class="content-header">
+  <h1>
+    Carteira de clientes
+  </h1>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box">
+        <div class="box-body">
+          <div class="form-group">
+            <label>Gerente de Contas:</label>
+            <input class="form-control" type="text" [(ngModel)]="gdc" (change)="filter()">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box box-info">
+    <div class="box-header with-border">
+      <h3 class="box-title"></h3>
+      <div class="box-tools">
+        <div class="input-group input-group-sm" style="width: 250px;">
+          <input type="text" name="table_search" class="form-control pull-right" placeholder="Pesquisa" [(ngModel)]="pesquisa">
+          <div class="input-group-btn">
+            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="box-body">
+      <div class="table-responsive">
+        <table class="table no-margin">
+          <thead>
+            <tr>
+              <th>Cliente</th>
+              <th>GDC</th>
+              <th>Satisfação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cliente of (clientes | pesquisa:pesquisa:['codigo','nomeFantasia','conceito','cidade','uf','dataCadastro'])">
+              <td><a href="/cliente/{{cliente[0].codigo}}">{{cliente[0].codigo}} - {{cliente[0].nomeFantasia}}</a></td>
+              <td>{{cliente[1].codigo}} - {{cliente[1].apelido}}</td>
+              <td>
+                <app-negative-positive-progress-bar title="Score de satisfação" [value]="cliente[0].scoreMedia"></app-negative-positive-progress-bar>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div *ngIf="loading" class="overlay">
+      <i class="fa fa-refresh fa-spin"></i>
+    </div>
+  </div>
+</section>
