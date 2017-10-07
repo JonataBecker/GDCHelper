@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { URLSearchParams } from '@angular/http';
 import { WebserviceService } from 'app/webservice.service';
+import { UsuarioLogado } from 'app/usuario/usuario-logado';
 
 @Component({
   selector: 'app-carteira',
@@ -14,10 +15,14 @@ export class CarteiraComponent implements OnInit {
   public loading:boolean;
   public pesquisa;
 
-  constructor(private webservice: WebserviceService) { }
+  constructor(private webservice: WebserviceService, private usuarioLogado: UsuarioLogado) { }
 
   ngOnInit() {
     this.gdc = "";
+    this.usuarioLogado.getUsuario().subscribe((usu) => {
+        this.gdc = usu;
+        this.filter();
+    });
   }
 
   filter() {

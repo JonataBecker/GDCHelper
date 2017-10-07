@@ -18,6 +18,7 @@ import { ClienteComponent } from './cliente/cliente.component';
 import { UsuarioLogado } from './usuario/usuario-logado';
 import { PesquisaPipe } from './pesquisa.pipe';
 import { CarteiraComponent } from './carteira/carteira.component';
+import { ConceitoBadgeComponent } from './conceito-badge/conceito-badge.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CarteiraComponent } from './carteira/carteira.component';
     NegativePositiveProgressBarComponent,
     ClienteComponent,
     PesquisaPipe,
-    CarteiraComponent
+    CarteiraComponent,
+    ConceitoBadgeComponent
   ],
   imports: [
     BrowserModule,
