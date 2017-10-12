@@ -47,8 +47,6 @@ export class AtendimentoComponent implements OnInit {
         me.date = (<any>$('#reservation')).val();
         me.filter();
       });
-
-
       this.usuarioLogado.getUsuario().subscribe((usu) => {
           this.gdc = usu;
           this.filter();

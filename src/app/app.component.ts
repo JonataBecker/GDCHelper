@@ -13,6 +13,7 @@ export class AppComponent  implements OnInit {
 
   public usuarios;
   public usuario;
+  public usuarioRech;
 
   constructor(
     private adminLTE:AdminLTE,
@@ -23,7 +24,8 @@ export class AppComponent  implements OnInit {
 
   ngOnInit() {
     this.adminLTE.fix();
-    this.usuario = new Usuario('Rech', 'Rech');
+    this.usuarioRech = new Usuario('', 'Rech');
+    this.usuario = this.usuarioRech;
     this.webservice.get('usuarios').subscribe((usuarios) => {
         this.usuarios = usuarios.json().map((usu) => {
           return new Usuario(usu.apelido, usu.nome);

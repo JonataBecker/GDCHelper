@@ -13,8 +13,6 @@
       <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
         <span class="sr-only">Toggle navigation</span>
       </a>
-
-
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <!-- User Account: style can be found in dropdown.less -->
@@ -27,15 +25,22 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                   <ul class="products-list product-list-in-box">
+                    <li class="item" (click)="selectUsuario(usuarioRech)">
+                      <div class="product-img">
+                        <img src="assets/default-50x50.gif" alt="Product Image">
+                      </div>
+                      <div class="product-info">
+                        <a href="javascript:void(0)" class="product-title">{{ usuarioRech.apelido }}</a>
+                        <span class="product-description">{{ usuarioRech.nome }}</span>
+                      </div>
+                    </li>
                     <li class="item" *ngFor="let usuario of usuarios" (click)="selectUsuario(usuario)">
                       <div class="product-img">
                         <img src="assets/default-50x50.gif" alt="Product Image">
                       </div>
                       <div class="product-info">
                         <a href="javascript:void(0)" class="product-title">{{ usuario.apelido }}</a>
-                        <span class="product-description">
-                              {{ usuario.nome }}
-                            </span>
+                        <span class="product-description">{{ usuario.nome }}</span>
                       </div>
                     </li>
                   </ul>
