@@ -19,6 +19,7 @@ import { UsuarioLogado } from './usuario/usuario-logado';
 import { PesquisaPipe } from './pesquisa.pipe';
 import { CarteiraComponent } from './carteira/carteira.component';
 import { ConceitoBadgeComponent } from './conceito-badge/conceito-badge.component';
+import { SortDirective } from './sort.directive';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ConceitoBadgeComponent } from './conceito-badge/conceito-badge.componen
     ClienteComponent,
     PesquisaPipe,
     CarteiraComponent,
-    ConceitoBadgeComponent
+    ConceitoBadgeComponent,
+    SortDirective
   ],
   imports: [
     BrowserModule,

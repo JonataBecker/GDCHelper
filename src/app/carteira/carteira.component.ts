@@ -14,10 +14,12 @@ export class CarteiraComponent implements OnInit {
   public gdc:string;
   public loading:boolean;
   public pesquisa;
+  public sortModel;
 
   constructor(private webservice: WebserviceService, private usuarioLogado: UsuarioLogado) { }
 
   ngOnInit() {
+    this.sortModel = [];
     this.gdc = "";
     this.usuarioLogado.getUsuario().subscribe((usu) => {
         this.gdc = usu;
@@ -34,6 +36,7 @@ export class CarteiraComponent implements OnInit {
     this.loading = true;
     const data = new  URLSearchParams();
     data.append('gdc', gdc);
+    data.append('ordem', this.sortModel.map(order => order.replace("-", " DESC").replace("+", " ASC")).join(','));
     this.webservice.get('cliente', data).subscribe((res) => {
       this.clientes = res.json();
       this.loading = false;

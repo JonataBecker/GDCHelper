@@ -1,6 +1,6 @@
 <section class="content-header">
   <h1>
-    Carteira de clientes
+    Carteira de clientes -{{sortModel | json}}-
   </h1>
 </section>
 <section class="content">
@@ -21,17 +21,16 @@
         <table class="table table-striped no-margin">
           <thead>
             <tr>
-              <th>Cliente</th>
-              <th>Conceito</th>
-              <th>GDC</th>
-              <th>Satisfação</th>
+              <th [appSort]="sortModel" sortColumn="c.codigo" (onSort)="filter()">Cliente</th>
+              <th [appSort]="sortModel" sortColumn="c.conceito" (onSort)="filter()">Conceito</th>
+              <th [appSort]="sortModel" sortColumn="c.gdc" (onSort)="filter()">GDC</th>
+              <th [appSort]="sortModel" sortColumn="c.scoreMedia" (onSort)="filter()">Satisfação</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let cliente of (clientes | pesquisa:pesquisa:['codigo','nomeFantasia','conceito','cidade','uf','dataCadastro','sistemas'])">
               <td><a href="/cliente/{{cliente[0].codigo}}">{{cliente[0].codigo}} - {{cliente[0].nomeFantasia}}</a></td>
               <td>
-
                 <app-conceito-badge [conceito]="cliente[0].conceito"></app-conceito-badge>
               </td>
               <td>{{cliente[1].codigo}} - {{cliente[1].apelido}}</td>
