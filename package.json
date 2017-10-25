@@ -40,6 +40,7 @@
     "jquery-sparkline": "^2.4.0",
     "moment": "^2.18.1",
     "rxjs": "^5.1.0",
+    "select2": "^4.0.4",
     "serve-static": "^1.12.4",
     "ts-node": "~2.0.0",
     "typescript": "~2.2.0",

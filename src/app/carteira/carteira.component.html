@@ -1,9 +1,109 @@
 <section class="content-header">
   <h1>
-    Carteira de clientes -{{sortModel | json}}-
+    Carteira de clientes
   </h1>
 </section>
 <section class="content">
+  <div class="box box-info collapsed-box">
+    <div class="box-header with-border">
+      <h3 class="box-title">Filtros</h3>
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse" aria-expanded="false">
+          <i class="fa fa-plus"></i>
+        </button>
+      </div>
+    </div>
+    <div class="box-body">
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Código:</label>
+          <input class="form-control" type="text" placeholder="Código" [(ngModel)]="codigoFiltro">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Nome fantasia:</label>
+          <input class="form-control" type="text" placeholder="Nome fantasia" [(ngModel)]="nomeFiltro">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Data de cadastro:</label>
+          <div class="input-group">
+            <div class="input-group-addon">
+              <i class="fa fa-calendar"></i>
+            </div>
+            <input class="form-control pull-right" placeholder="Data de cadastro" id="fieldData" type="text">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Conceito:</label>
+          <select class="form-control" id="fieldConceito" multiple="multiple" data-placeholder="Conceito" style="width: 100%;" tabindex="-1" aria-hidden="true">
+            <option>AA</option>
+            <option>AB</option>
+            <option>B</option>
+            <option>C</option>
+            <option>D</option>
+            <option>E</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Cidade:</label>
+          <input class="form-control" type="text" placeholder="Cidade" [(ngModel)]="cidadeFiltro">
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>UF:</label>
+          <select class="form-control" id="fieldUf" multiple="multiple" data-placeholder="Estado" style="width: 100%;" tabindex="-1" aria-hidden="true">
+            <option>AC</option>
+            <option>AL</option>
+            <option>AP</option>
+            <option>AM</option>
+            <option>BA</option>
+            <option>CE</option>
+            <option>DF</option>
+            <option>ES</option>
+            <option>GO</option>
+            <option>MA</option>
+            <option>MT</option>
+            <option>MS</option>
+            <option>MG</option>
+            <option>PA</option>
+            <option>PB</option>
+            <option>PR</option>
+            <option>PE</option>
+            <option>PI</option>
+            <option>RJ</option>
+            <option>RN</option>
+            <option>RS</option>
+            <option>RO</option>
+            <option>RR</option>
+            <option>SC</option>
+            <option>SP</option>
+            <option>SE</option>
+            <option>TO</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Sistemas contratados:</label>
+          <select class="form-control" id="fieldSistema" multiple="multiple" data-placeholder="Módulo" style="width: 100%;" tabindex="-1" aria-hidden="true">
+            <option *ngFor="let sistema of sistemasDisponiveis">{{sistema[1]}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="box-footer">
+      <button class="btn btn-info pull-left" (click)="aplicaFiltros()">Aplicar filtros</button>
+      <button class="btn btn-default pull-right" (click)="limpaFiltros()">Limpar filtros</button>
+    </div>
+  </div>
   <div class="box box-info">
     <div class="box-header with-border">
       <h3 class="box-title"></h3>
@@ -28,7 +128,9 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let cliente of (clientes | pesquisa:pesquisa:['codigo','nomeFantasia','conceito','cidade','uf','dataCadastro','sistemas'])">
+            <tr *ngFor="let cliente of (clientes
+            | pesquisa:pesquisa:['codigo','nomeFantasia','conceito','cidade','uf','dataCadastro','sistemas']
+            | filtro:clienteFiltros)">
               <td><a href="/cliente/{{cliente[0].codigo}}">{{cliente[0].codigo}} - {{cliente[0].nomeFantasia}}</a></td>
               <td>
                 <app-conceito-badge [conceito]="cliente[0].conceito"></app-conceito-badge>

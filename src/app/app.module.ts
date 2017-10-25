@@ -20,6 +20,7 @@ import { PesquisaPipe } from './pesquisa.pipe';
 import { CarteiraComponent } from './carteira/carteira.component';
 import { ConceitoBadgeComponent } from './conceito-badge/conceito-badge.component';
 import { SortDirective } from './sort.directive';
+import { FiltroCarteiraPipe } from './filtro-carteira.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { SortDirective } from './sort.directive';
     PesquisaPipe,
     CarteiraComponent,
     ConceitoBadgeComponent,
-    SortDirective
+    SortDirective,
+    FiltroCarteiraPipe
   ],
   imports: [
     BrowserModule,
