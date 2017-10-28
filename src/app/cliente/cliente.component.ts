@@ -14,10 +14,14 @@ export class ClienteComponent implements OnInit {
   public cliente;
   public contatos;
   public historicoSatisfacao;
+  public nomeFiltro:string;
+  public cargoFiltro:string;
 
   constructor(private webservice: WebserviceService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.nomeFiltro = "";
+    this.cargoFiltro = "";
     let idCliente;
     this.route.params.subscribe(params => {
       idCliente = params['idCliente'];
