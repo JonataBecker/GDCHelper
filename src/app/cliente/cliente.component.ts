@@ -39,8 +39,6 @@ export class ClienteComponent implements OnInit {
       });
 
       this.webservice.get('score?filter=cliente=' + params['idCliente'], null).subscribe((res) => {
-
-        console.log(res.json());
         let byPeriod = res.json().reduce((totalized, record) => {
           let period = record.dataCriacao.substr(0,7);
           if (totalized[period] == undefined) {

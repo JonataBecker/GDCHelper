@@ -1,0 +1,36 @@
+<section class="content-header">
+  <h1>
+    Atendimentos
+  </h1>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box">
+        <div class="box-body">
+          <table class="table table-bordered table-striped">
+            <tbody>
+              <tr>
+                <th>Data</th>
+                <th>Contato</th>
+                <th>Técnico</th>
+                <th>Sistema</th>
+              </tr>
+            <ng-container *ngFor="let atendimento of atendimentos">
+              <tr (click)="openAtendimento(atendimento)" style="cursor:pointer">
+                <td>{{atendimento.data | date}}</td>
+                <td>{{atendimento.contato}}</td>
+                <td>{{atendimento.tecnico}}</td>
+                <td>{{atendimento.sistema}}</td>
+              </tr>
+              <tr *ngIf="atendimento.click">
+                  <td colspan="4"><pre>{{atendimento.mensagem}}</pre></td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

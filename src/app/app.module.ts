@@ -22,6 +22,7 @@ import { ConceitoBadgeComponent } from './conceito-badge/conceito-badge.componen
 import { SortDirective } from './sort.directive';
 import { FiltroCarteiraPipe } from './filtro-carteira.pipe';
 import { FiltroContatoPipe } from './filtro-contato.pipe';
+import { ClienteAtendimentoComponent } from './cliente-atendimento/cliente-atendimento.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { FiltroContatoPipe } from './filtro-contato.pipe';
     ConceitoBadgeComponent,
     SortDirective,
     FiltroCarteiraPipe,
-    FiltroContatoPipe
+    FiltroContatoPipe,
+    ClienteAtendimentoComponent
   ],
   imports: [
     BrowserModule,

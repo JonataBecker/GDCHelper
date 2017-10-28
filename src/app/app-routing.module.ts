@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { CarteiraComponent } from './carteira/carteira.component';
 import { ClienteComponent } from './cliente/cliente.component';
+import { ClienteAtendimentoComponent } from './cliente-atendimento/cliente-atendimento.component';
 import { AtendimentoComponent } from './atendimento/atendimento.component';
 import { AtendimentoDrilComponent } from './atendimento/atendimento-dril/atendimento-dril.component';
 
@@ -31,7 +32,15 @@ const routes: Routes = [
   {
     path: 'cliente/:idCliente',
     component: ClienteComponent,
-  }
+  },
+  {
+    path: 'cliente/:idCliente/atendimento',
+    component: ClienteAtendimentoComponent,
+  },
+  {
+    path: 'cliente/:idCliente/atendimento/:codigoContato',
+    component: ClienteAtendimentoComponent,
+  }    
 ];
 
 @NgModule({
