@@ -16,6 +16,7 @@ export class ClienteComponent implements OnInit {
   public historicoSatisfacao;
   public nomeFiltro:string;
   public cargoFiltro:string;
+  public sistemas;
 
   constructor(private webservice: WebserviceService, private route: ActivatedRoute) { }
 
@@ -32,6 +33,9 @@ export class ClienteComponent implements OnInit {
       data.append('idCliente', idCliente);
       this.webservice.get('contatos', data).subscribe((res) => {
         this.contatos = res.json();
+      });
+      this.webservice.get('sistema', data).subscribe((res) => {
+        this.sistemas = res.json();
       });
 
       this.webservice.get('score?filter=cliente=' + params['idCliente'], null).subscribe((res) => {
