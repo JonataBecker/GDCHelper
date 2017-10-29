@@ -101,10 +101,10 @@
               <table class="table table-bordered table-striped">
                 <tbody>
                   <tr>
-                    <th>Nome</th>
-                    <th>Cargo</th>
-                    <th>E-mail</th>
-                    <th>Satisfação</th>
+                    <th [appSort]="sortContato" sortColumn="c.nome" (onSort)="updateContato()">Nome</th>
+                    <th [appSort]="sortContato" sortColumn="c.cargo" (onSort)="updateContato()">Cargo</th>
+                    <th [appSort]="sortContato" sortColumn="c.email" (onSort)="updateContato()">E-mail</th>
+                    <th [appSort]="sortContato" sortColumn="c.score" (onSort)="updateContato()">Satisfação</th>
                   </tr>
                   <tr *ngFor="let contato of (contatos | filtroContato:nomeFiltro:cargoFiltro)">
                     <td><a routerLink="atendimento/{{contato.codigo}}">{{contato.nome}}</a></td>
@@ -133,8 +133,8 @@
             <table class="table table-bordered table-striped">
               <tbody>
                 <tr>
-                  <th>Descrição</th>
-                  <th>Satisfação</th>
+                  <th [appSort]="sortSistema" sortColumn="s.descricao" (onSort)="updateSistema()">Descrição</th>
+                  <th [appSort]="sortSistema" sortColumn="s.score" (onSort)="updateSistema()">Satisfação</th>
                 </tr>
                 <tr *ngFor="let sistema of sistemas">
                   <td>{{sistema.descricao}}</td>

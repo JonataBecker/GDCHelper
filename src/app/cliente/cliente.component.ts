@@ -17,27 +17,22 @@ export class ClienteComponent implements OnInit {
   public nomeFiltro:string;
   public cargoFiltro:string;
   public sistemas;
-  public sortModel = [];
+  public sortContato = [];
+  public sortSistema = [];
+  public idCliente;
 
   constructor(private webservice: WebserviceService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.nomeFiltro = "";
     this.cargoFiltro = "";
-    let idCliente;
     this.route.params.subscribe(params => {
-      idCliente = params['idCliente'];
+      this.idCliente = params['idCliente'];
       this.webservice.get('cliente/' + params['idCliente'], null).subscribe((res) => {
         this.cliente = res.json();
       });
-      const data = new  URLSearchParams();
-      data.append('idCliente', idCliente);
-      this.webservice.get('contatos', data).subscribe((res) => {
-        this.contatos = res.json();
-      });
-      this.webservice.get('sistema', data).subscribe((res) => {
-        this.sistemas = res.json();
-      });
+      this.updateContato();
+      this.updateSistema();
 
       this.webservice.get('score?filter=cliente=' + params['idCliente'], null).subscribe((res) => {
         let byPeriod = res.json().reduce((totalized, record) => {
@@ -64,10 +59,14 @@ export class ClienteComponent implements OnInit {
 
         this.historicoSatisfacao = new Chart({
           chart: {
-            type: 'area'
+            type: 'area',
+            height: 150
           },
           xAxis: {
             categories: Object.keys(byPeriod)
+          },
+          title: {
+            text: ''
           },
           yAxis: {
             title: {
@@ -97,9 +96,6 @@ export class ClienteComponent implements OnInit {
               }
             }]
           },
-          title: {
-            enabled: false
-          },
           legend: {
             enabled: false
           },
@@ -116,6 +112,24 @@ export class ClienteComponent implements OnInit {
 
     });
 
+  }
+
+  updateContato() {
+    const data = new  URLSearchParams();
+    data.append('idCliente', this.idCliente);
+    data.append('ordem', this.sortContato.map(order => order.replace("-", " DESC").replace("+", " ASC")).join(','));
+    this.webservice.get('contatos', data).subscribe((res) => {
+      this.contatos = res.json();
+    });
+  }
+
+  updateSistema() {
+    const data = new  URLSearchParams();
+    data.append('idCliente', this.idCliente);
+    data.append('ordem', this.sortSistema.map(order => order.replace("-", " DESC").replace("+", " ASC")).join(','));
+    this.webservice.get('sistema', data).subscribe((res) => {
+      this.sistemas = res.json();
+    });
   }
 
 }
