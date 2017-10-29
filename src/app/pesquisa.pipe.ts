@@ -20,7 +20,7 @@ export class PesquisaPipe implements PipeTransform {
       for (let campo of campos) {
         if (registro[campo] != undefined) {
           if (typeof registro[campo] != "number") {
-            if (registro[campo].indexOf(pesquisa) >= 0) {
+            if (registro[campo].toLowerCase().indexOf(pesquisa.toLowerCase()) >= 0) {
               return true;
             }
           } else {

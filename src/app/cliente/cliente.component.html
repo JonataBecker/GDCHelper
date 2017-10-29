@@ -104,11 +104,13 @@
                     <th>Nome</th>
                     <th>Cargo</th>
                     <th>E-mail</th>
+                    <th>Satisfação</th>
                   </tr>
                   <tr *ngFor="let contato of (contatos | filtroContato:nomeFiltro:cargoFiltro)">
                     <td><a routerLink="atendimento/{{contato.codigo}}">{{contato.nome}}</a></td>
                     <td>{{contato.cargo}}</td>
                     <td>{{contato.email}}</td>
+                    <td><app-negative-positive-progress-bar title="Satisfação" [value]="contato.score"></app-negative-positive-progress-bar></td>
                   </tr>
                 </tbody>
               </table>
@@ -132,9 +134,11 @@
               <tbody>
                 <tr>
                   <th>Descrição</th>
+                  <th>Satisfação</th>
                 </tr>
                 <tr *ngFor="let sistema of sistemas">
                   <td>{{sistema.descricao}}</td>
+                  <td><app-negative-positive-progress-bar title="Satisfação" [value]="sistema.score"></app-negative-positive-progress-bar></td>
                 </tr>
               </tbody>
             </table>

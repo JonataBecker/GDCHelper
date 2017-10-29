@@ -17,6 +17,7 @@ export class ClienteComponent implements OnInit {
   public nomeFiltro:string;
   public cargoFiltro:string;
   public sistemas;
+  public sortModel = [];
 
   constructor(private webservice: WebserviceService, private route: ActivatedRoute) { }
 
@@ -79,7 +80,7 @@ export class ClienteComponent implements OnInit {
               to: 1.0,
               color: 'rgba(0, 255, 60, 0.1)',
               label: {
-                text: 'Positive',
+                text: 'Positivo',
                 style: {
                   color: '#606060'
                 }
@@ -89,7 +90,7 @@ export class ClienteComponent implements OnInit {
               to: -1.0,
               color: 'rgba(255, 0, 0, 0.1)',
               label: {
-                text: 'Negative',
+                text: 'Negativo',
                 style: {
                   color: '#606060'
                 }

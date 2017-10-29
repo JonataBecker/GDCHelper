@@ -11,10 +11,6 @@ import { AtendimentoDrilComponent } from './atendimento/atendimento-dril/atendim
 
 const routes: Routes = [
   {
-    path: '',
-    component: HomeComponent,
-  },
-  {
     path: 'home',
     component: HomeComponent,
   },
@@ -40,7 +36,12 @@ const routes: Routes = [
   {
     path: 'cliente/:idCliente/atendimento/:codigoContato',
     component: ClienteAtendimentoComponent,
-  }    
+  },
+  {
+    path: '**',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({
