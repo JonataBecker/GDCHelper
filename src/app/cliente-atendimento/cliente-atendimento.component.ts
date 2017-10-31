@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { URLSearchParams } from '@angular/http';
 import { WebserviceService } from 'app/webservice.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -27,7 +28,16 @@ export class ClienteAtendimentoComponent implements OnInit {
 
   openAtendimento(atendimento) {
     atendimento.click = !atendimento.click;
+  }
 
+  showClassificacao(id) {
+    let atendimento = this.atendimentos.find(atendimento => atendimento.id == id);
+    const data = new  URLSearchParams();
+    data.append('text', atendimento.mensagem);
+    this.webservice.get(`score/compute`, data).subscribe((res) => {
+      atendimento.mensagemClassificada = res.json();
+      atendimento.mensagemClassificada.forEach(record => record.class = ((record.score+1) / 2 * 20).toFixed(0));
+    });
   }
 
 }

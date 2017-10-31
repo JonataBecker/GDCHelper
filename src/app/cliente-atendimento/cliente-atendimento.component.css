@@ -1,0 +1,56 @@
+.classified {
+  font-family: consolas;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.classified .frase {
+  display: flex;
+  width: 100%;
+  padding-right: 5px;
+  padding-bottom: 0px;
+}
+
+.classified p {
+  padding-top: 0px;
+  padding-left: 5px;
+  margin: 0px;
+}
+
+.classified .sentence {
+  width: calc(100% - 100px);
+  float: left;
+}
+
+.classified .score-number {
+  margin: 0px;
+  width: 100px;
+  float: left;
+  text-align: right;
+  padding-right: 5px;
+  font-weight: bold;
+}
+
+.classified .score-0 { background-color: #dd4b39 }
+.classified .score-1 { background-color: #d8533a }
+.classified .score-2 { background-color: #d15c3c }
+.classified .score-3 { background-color: #c9633e }
+.classified .score-4 { background-color: #c5683f }
+.classified .score-5 { background-color: #be6e41 }
+.classified .score-6 { background-color: #b57442 }
+.classified .score-7 { background-color: #ae7a44 }
+.classified .score-8 { background-color: #a87d46 }
+.classified .score-9 { background-color: #a08247 }
+.classified .score-10 { background-color: #988749 }
+.classified .score-11 { background-color: #908b4b }
+.classified .score-12 { background-color: #868f4d }
+.classified .score-13 { background-color: #7c934f }
+.classified .score-14 { background-color: #739550 }
+.classified .score-15 { background-color: #669a52 }
+.classified .score-16 { background-color: #599d54 }
+.classified .score-17 { background-color: #4ba056 }
+.classified .score-18 { background-color: #2ea458 }
+.classified .score-19 { background-color: #00a65a }

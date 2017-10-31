@@ -15,6 +15,7 @@
                 <th>Contato</th>
                 <th>Técnico</th>
                 <th>Sistema</th>
+                <th>Satisfação</th>
               </tr>
             <ng-container *ngFor="let atendimento of atendimentos">
               <tr (click)="openAtendimento(atendimento)" style="cursor:pointer">
@@ -22,9 +23,25 @@
                 <td>{{atendimento.contato}}</td>
                 <td>{{atendimento.tecnico}}</td>
                 <td>{{atendimento.sistema}}</td>
+                <td><app-negative-positive-progress-bar title="Score de satisfação" [value]="atendimento.score"></app-negative-positive-progress-bar></td>
               </tr>
               <tr *ngIf="atendimento.click">
-                  <td colspan="4"><pre>{{atendimento.mensagem}}</pre></td>
+                  <td colspan="5">
+                    <pre *ngIf="atendimento?.mensagemClassificada == undefined">{{atendimento.mensagem}}</pre>
+                    <div *ngIf="atendimento?.mensagemClassificada != undefined" class="classified">
+                      <div *ngFor="let frase of atendimento?.mensagemClassificada" class="frase score-{{frase.class}}">
+                        <div class="score-number" title="{{frase.score | percent:'1.1-1'}} (Bom: {{frase.pctBom | percent:'1.1-1'}}, Ruim: {{frase.pctRuim | percent:'1.1-1'}})">
+                          {{frase.score | percent:'1.1-1'}}
+                        </div>
+                        <div class="sentence">
+                          <p>
+                            {{frase.sentence}}
+                            <br>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="btn btn-default" (click)="showClassificacao(atendimento.id)">Ver classificação</button></td>
               </tr>
             </ng-container>
           </tbody>
