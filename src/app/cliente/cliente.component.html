@@ -59,8 +59,11 @@
         <b>Versão liberada:</b> {{cliente?.versaoLiberada}}
       </div>
     </div>
-
-    <a routerLink="atendimento">Atendimentos</a>
+    <div class="row">
+      <div class="col-md-12">
+        <button class="btn btn-default pull-left" routerLink="atendimento">Atendimentos</button>
+      </div>
+    </div>
 
     <hr>
     <div class="row col-md-12">
@@ -74,13 +77,13 @@
     <hr>
 
     <div class="row">
-      <div class="col-md-8">
-        <div class="box">
+      <div class="col-md-12">
+        <div class="box collapsed-box">
           <div class="box-header with-border">
             <h3 class="box-title">Contatos</h3>
             <div class="box-tools pull-right">
-              <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                <i class="fa fa-minus"></i>
+              <button type="button" class="btn btn-box-tool" data-widget="collapse" aria-expanded="false">
+                <i class="fa fa-plus"></i>
               </button>
             </div>
           </div>
@@ -118,14 +121,15 @@
           </div>
         </div>
       </div>
-
-      <div class="col-md-4">
-        <div class="box">
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box collapsed-box">
           <div class="box-header with-border">
             <h3 class="box-title">Sistemas Contratados</h3>
             <div class="box-tools pull-right">
-              <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                <i class="fa fa-minus"></i>
+              <button type="button" class="btn btn-box-tool" data-widget="collapse" aria-expanded="false">
+                <i class="fa fa-plus"></i>
               </button>
             </div>
           </div>
