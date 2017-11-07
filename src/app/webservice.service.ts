@@ -27,4 +27,8 @@ export class WebserviceService {
     return this.http.get(this.buildURL(page),  { search: params });
   }
 
+  post(page:string, body:any):Observable<Response> {
+    return this.http.post(this.buildURL(page), body);
+  }
+
 }

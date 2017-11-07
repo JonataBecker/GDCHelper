@@ -21,7 +21,7 @@
 }
 
 .classified .sentence {
-  width: calc(100% - 100px);
+  width: calc(100% - 200px);
   float: left;
 }
 
