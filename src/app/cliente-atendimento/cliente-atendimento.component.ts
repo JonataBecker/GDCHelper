@@ -40,4 +40,11 @@ export class ClienteAtendimentoComponent implements OnInit {
     });
   }
 
+  classifica(frase, classe) {
+    this.webservice.post(`score/treina`, {
+      classificacao: classe,
+      texto: frase
+    }).subscribe();
+  }
+
 }
