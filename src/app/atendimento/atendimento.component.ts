@@ -9,8 +9,7 @@ import { UsuarioLogado } from 'app/usuario/usuario-logado';
 
 @Component({
   selector: 'app-atendimento',
-  templateUrl: './atendimento.component.html',
-  styleUrls: ['./atendimento.component.css']
+  templateUrl: './atendimento.component.html'
 })
 export class AtendimentoComponent implements OnInit {
 
@@ -53,10 +52,23 @@ export class AtendimentoComponent implements OnInit {
       });
   }
 
+  /**
+   * Formata data
+   * 
+   * @param data 
+   */
   private getDate(data) {
     return moment(data, "DD/MM/YYYY").format("YYYY-MM-DD");
   }
 
+  /**
+   * Carrega atendimentos
+   * 
+   * @param ini 
+   * @param fim 
+   * @param gdc 
+   * @param cliente 
+   */
   load(ini:string, fim:string, gdc:string, cliente:string) {
     const data = new  URLSearchParams();
     data.append('dataInicial', this.getDate(ini));
@@ -69,11 +81,19 @@ export class AtendimentoComponent implements OnInit {
     });
   }
 
+  /**
+   * Executa filtro de atendimentos
+   */
   filter() {
     let [ini, fim] = this.date.split(' - ');
     this.load(ini, fim, this.gdc, this.cliente);
   }
 
+  /**
+   * Executa drill de atendimentos
+   * 
+   * @param atendimento 
+   */
   dril(atendimento:any) {
     let [ini, fim] = this.date.split(' - ');
     this.router.navigate(['/atendimento', atendimento.idCliente, this.getDate(ini), this.getDate(fim)]);

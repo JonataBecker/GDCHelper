@@ -5,6 +5,11 @@ export class AtendimentoService {
 
   constructor() { }
 
+  /**
+   * Retorna qual foi o maior tempo e a maior quantidade
+   * 
+   * @param atendimentos 
+   */
   buildMaiorTempoQuantidade(atendimentos) {
     let maiorTempo = 0;
     let maiorQuantidade = 0;

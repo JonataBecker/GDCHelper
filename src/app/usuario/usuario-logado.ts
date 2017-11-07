@@ -8,15 +8,26 @@ export class UsuarioLogado {
 
   private subject = new Subject<any>();
 
+  /**
+   * Executa o login
+   * 
+   * @param usuario 
+   */
   login(usuario:Usuario) {
     localStorage.setItem('usuario', usuario.getUsuario());
     this.subject.next(usuario.getUsuario());
   }
 
+  /**
+   * Retorna o usuário logado
+   */
   getUsuarioLogado() {
     return localStorage.getItem('usuario');
   }
 
+  /**
+   * Retorna o usuário
+   */
   getUsuario(): Observable<any> {
       setTimeout(() => {
           this.subject.next(this.getUsuarioLogado());

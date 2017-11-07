@@ -59,9 +59,21 @@
         <b>Versão liberada:</b> {{cliente?.versaoLiberada}}
       </div>
     </div>
-
-    <a routerLink="atendimento">Atendimentos</a>
-
+    <br />
+    <div class="row">
+      <div class="col-lg-4 col-xs-6">
+        <div class="small-box bg-aqua" routerLink="atendimento">
+          <div class="inner">
+            <h3>{{dataUltimoAtendimento | date:'dd/MM/yyyy'}}</h3>
+            <p>Último atendimento</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-android-call"></i>
+          </div>
+          <a class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+    </div>
     <hr>
     <div class="row col-md-12">
       <p class="lead">Histórico de satisfação mensal</p>
@@ -74,7 +86,7 @@
     <hr>
 
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-12">
         <div class="box">
           <div class="box-header with-border">
             <h3 class="box-title">Contatos</h3>
@@ -104,12 +116,14 @@
                     <th [appSort]="sortContato" sortColumn="c.nome" (onSort)="updateContato()">Nome</th>
                     <th [appSort]="sortContato" sortColumn="c.cargo" (onSort)="updateContato()">Cargo</th>
                     <th [appSort]="sortContato" sortColumn="c.email" (onSort)="updateContato()">E-mail</th>
+                    <th [appSort]="sortContato" sortColumn="c.dataUltimoAtendimento" (onSort)="updateContato()">Data último atendimento</th>
                     <th [appSort]="sortContato" sortColumn="c.score" (onSort)="updateContato()">Satisfação</th>
                   </tr>
                   <tr *ngFor="let contato of (contatos | filtroContato:nomeFiltro:cargoFiltro)">
                     <td><a routerLink="atendimento/{{contato.codigo}}">{{contato.nome}}</a></td>
                     <td>{{contato.cargo}}</td>
                     <td>{{contato.email}}</td>
+                    <td>{{contato.dataUltimoAtendimento | date:'dd/MM/yyyy'}}</td>
                     <td><app-negative-positive-progress-bar title="Satisfação" [value]="contato.score"></app-negative-positive-progress-bar></td>
                   </tr>
                 </tbody>
@@ -119,7 +133,7 @@
         </div>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-12">
         <div class="box">
           <div class="box-header with-border">
             <h3 class="box-title">Sistemas Contratados</h3>

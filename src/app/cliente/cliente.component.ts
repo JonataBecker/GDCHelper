@@ -20,6 +20,7 @@ export class ClienteComponent implements OnInit {
   public sortContato = [];
   public sortSistema = [];
   public idCliente;
+  public dataUltimoAtendimento;
 
   constructor(private webservice: WebserviceService, private route: ActivatedRoute) { }
 
@@ -30,6 +31,9 @@ export class ClienteComponent implements OnInit {
       this.idCliente = params['idCliente'];
       this.webservice.get('cliente/' + params['idCliente'], null).subscribe((res) => {
         this.cliente = res.json();
+      });
+      this.webservice.get(`cliente/${params['idCliente']}/atendimento/ultimo`, null).subscribe((res) => {
+        this.dataUltimoAtendimento = res.json().data;
       });
       this.updateContato();
       this.updateSistema();

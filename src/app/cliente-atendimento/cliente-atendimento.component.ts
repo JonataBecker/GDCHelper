@@ -26,10 +26,20 @@ export class ClienteAtendimentoComponent implements OnInit {
     });
   }
 
+  /**
+   * Abre informações do atendimento
+   * 
+   * @param atendimento 
+   */
   openAtendimento(atendimento) {
     atendimento.click = !atendimento.click;
   }
 
+  /**
+   * Exible classificação
+   * 
+   * @param id 
+   */
   showClassificacao(id) {
     let atendimento = this.atendimentos.find(atendimento => atendimento.id == id);
     const data = new  URLSearchParams();

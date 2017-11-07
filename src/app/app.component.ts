@@ -6,8 +6,7 @@ import { Usuario } from 'app/usuario/usuario';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './app.component.html'
 })
 export class AppComponent  implements OnInit {
 
@@ -39,6 +38,11 @@ export class AppComponent  implements OnInit {
     });
   }
 
+  /**
+   * Seleciona o usuários
+   * 
+   * @param usuario 
+   */
   selectUsuario(usuario) {
     this.usuario = usuario;
     this.usuarioLogado.login(usuario);

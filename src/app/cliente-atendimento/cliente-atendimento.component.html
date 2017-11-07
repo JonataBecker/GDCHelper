@@ -19,7 +19,7 @@
               </tr>
             <ng-container *ngFor="let atendimento of atendimentos">
               <tr (click)="openAtendimento(atendimento)" style="cursor:pointer">
-                <td>{{atendimento.data | date}}</td>
+                <td>{{atendimento.data | date:'dd/MM/yyyy'}}</td>
                 <td>{{atendimento.contato}}</td>
                 <td>{{atendimento.tecnico}}</td>
                 <td>{{atendimento.sistema}}</td>
@@ -27,7 +27,7 @@
               </tr>
               <tr *ngIf="atendimento.click">
                   <td colspan="5">
-                    <pre *ngIf="atendimento?.mensagemClassificada == undefined">{{atendimento.mensagem}}</pre>
+                    <span *ngIf="atendimento?.mensagemClassificada == undefined" class="mensagem">{{atendimento.mensagem}}</span> <br/>
                     <div *ngIf="atendimento?.mensagemClassificada != undefined" class="classified">
                       <div *ngFor="let frase of atendimento?.mensagemClassificada" class="frase score-{{frase.class}}">
                         <div class="score-number" title="{{frase.score | percent:'1.1-1'}} (Bom: {{frase.pctBom | percent:'1.1-1'}}, Ruim: {{frase.pctRuim | percent:'1.1-1'}})">

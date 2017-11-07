@@ -3,3 +3,7 @@
   margin: 0px;
   padding: 0px;
 }
+
+.mensagem {
+  white-space: pre-wrap;
+}
