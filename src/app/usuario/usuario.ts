@@ -1,6 +1,6 @@
 export class Usuario {
 
-  constructor(private usuario:string, private nome: string) {
+  constructor(private usuario:string, private nome: string, private foto:string) {
   }
 
   /**
@@ -15,6 +15,13 @@ export class Usuario {
    */
   getNome() {
     return this.nome;
+  }
+
+  /**
+   * Retorna a foto do usuários
+   */
+  getFoto() {
+    return this.foto;
   }
 
 }

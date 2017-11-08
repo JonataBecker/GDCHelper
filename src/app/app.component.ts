@@ -23,11 +23,11 @@ export class AppComponent  implements OnInit {
 
   ngOnInit() {
     this.adminLTE.fix();
-    this.usuarioRech = new Usuario('', 'Rech');
+    this.usuarioRech = new Usuario('', 'Rech', 'rech');
     this.usuario = this.usuarioRech;
     this.webservice.get('usuarios').subscribe((usuarios) => {
         this.usuarios = usuarios.json().map((usu) => {
-          return new Usuario(usu.apelido, usu.nome);
+          return new Usuario(usu.apelido, usu.nome, usu.foto);
         });
         const founded = this.usuarios.find((usuario) =>  {
           return usuario.getUsuario() == this.usuarioLogado.getUsuarioLogado();
