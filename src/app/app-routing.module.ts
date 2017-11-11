@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { CarteiraComponent } from './carteira/carteira.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { ClienteAtendimentoComponent } from './cliente-atendimento/cliente-atendimento.component';
+import { ClienteAtualizacaoComponent } from './cliente-atualizacao/cliente-atualizacao.component';
 import { AtendimentoComponent } from './atendimento/atendimento.component';
 import { AtendimentoDrilComponent } from './atendimento/atendimento-dril/atendimento-dril.component';
 
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'cliente/:idCliente/atendimento/:codigoContato',
     component: ClienteAtendimentoComponent,
+  },
+  {
+    path: 'cliente/:idCliente/atualizacao',
+    component: ClienteAtualizacaoComponent,
   },
   {
     path: '**',

@@ -23,6 +23,7 @@ import { SortDirective } from './sort.directive';
 import { FiltroCarteiraPipe } from './filtro-carteira.pipe';
 import { FiltroContatoPipe } from './filtro-contato.pipe';
 import { ClienteAtendimentoComponent } from './cliente-atendimento/cliente-atendimento.component';
+import { ClienteAtualizacaoComponent } from './cliente-atualizacao/cliente-atualizacao.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ClienteAtendimentoComponent } from './cliente-atendimento/cliente-atend
     SortDirective,
     FiltroCarteiraPipe,
     FiltroContatoPipe,
-    ClienteAtendimentoComponent
+    ClienteAtendimentoComponent,
+    ClienteAtualizacaoComponent
   ],
   imports: [
     BrowserModule,

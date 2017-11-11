@@ -1,0 +1,31 @@
+<section class="content-header">
+  <h1>
+    Atualizações
+  </h1>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box">
+        <div class="box-body">
+          <table class="table table-bordered table-striped">
+            <tbody>
+              <tr>
+                <th>Data</th>
+                <th>Horário</th>
+                <th>Versão</th>
+              </tr>
+              <ng-container *ngFor="let atualizacao of atualizacoes">
+                <tr>
+                  <td>{{atualizacao.data | date:'dd/MM/yyyy'}}</td>
+                  <td>{{atualizacao.data | date:'HH:mm:ss'}}</td>
+                  <td>{{atualizacao.versao}}</td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
