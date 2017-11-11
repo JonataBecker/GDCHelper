@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { URLSearchParams } from '@angular/http';
 import { Chart } from 'angular-highcharts';
 import { WebserviceService } from 'app/webservice.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-cliente',
@@ -14,6 +15,7 @@ export class ClienteComponent implements OnInit {
   public cliente;
   public contatos;
   public historicoSatisfacao;
+  public historicoAtualizacao;
   public nomeFiltro:string;
   public cargoFiltro:string;
   public sistemas;
@@ -112,6 +114,70 @@ export class ClienteComponent implements OnInit {
           }]
         });
 
+      });
+
+      this.webservice.get(`cliente/${params['idCliente']}/trocasVersao`, null).subscribe((res) => {
+        let registros = res.json().map(registro=>{ return [moment(registro[1]).toDate().getTime(), registro[0]] });
+        registros = registros.sort((r1,r2)=>{
+          return r1[0] - r2[0];
+        })
+        this.historicoAtualizacao = new Chart({
+          chart: {
+            type: 'spline',
+            height: 250
+          },
+          title: {
+              text: '',
+          },
+          yAxis: {
+            labels: {
+              enabled: false,
+            },
+            title: {
+              enabled: false,
+            },
+          },
+          xAxis: {
+              type: 'datetime',
+              labels: {
+                  overflow: 'justify'
+              },
+
+              plotBands: registros.map((registro, index) => {
+
+                let nextDate;
+                if (index == registros.length - 1) {
+                  nextDate = moment().toDate();
+                } else {
+                  nextDate = moment(registros[index+1][0]).toDate();
+                }
+
+                return {
+                   from: moment(registro[0]).toDate(),
+                   to: nextDate,
+                   color: index %2 == 0 ? 'rgba(192, 192, 192, 0.1)':'rgba(0, 0, 0, 0)',
+                   label: {
+                       text: registro[1],
+                       verticalAlign: index %2 == 0 ? "top" : "middle",
+                       style: {
+                           color: '#606060',
+                           fontSize: '7pt'
+                       }
+                   }
+                 }
+              })
+
+          },
+          legend: {
+            enabled: false
+          },
+          credits: {
+            enabled: false
+          },
+          series: [{
+              data: registros.map(registro=>{return [registro[0], 1]})
+          }]
+        });
       });
 
     });
